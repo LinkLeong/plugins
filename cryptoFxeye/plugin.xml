@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cryptoFxeye" version="0.0.1" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cryptoFxeye</name>
+    <js-module name="cryptoFxeye" src="www/cryptoFxeye.js">
+        <clobbers target="cordova.plugins.cryptoFxeye" />
+    </js-module>
+    <preference name="API_URL" default="http://192.168.1.128:5100" />
+    <preference name="TOKEN_URL" default="http://192.168.1.128:59103" />
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="cryptoFxeye">
+                <param name="android-package" value="cryptoFxeye.cryptoFxeye" />
+            </feature>
+        </config-file>
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET" />
+			<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+        </config-file>
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <meta-data android:name="api_url" android:value="$API_URL"></meta-data>
+            <meta-data android:name="token_url" android:value="$TOKEN_URL"></meta-data>
+        </config-file>
+        <source-file src="src/android/cryptoFxeye.java" target-dir="src/cryptoFxeye/cryptoFxeye" />
+        <source-file src="src/android/GetTokenBean.java" target-dir="src/cryptoFxeye" />
+        <source-file src="src/android/Logger.java" target-dir="src/cryptoFxeye" />
+        <source-file src="src/android/MyString.java" target-dir="src/cryptoFxeye" />
+        <source-file src="src/android/OkHttpRequestManager.java" target-dir="src/cryptoFxeye" />
+        <source-file src="src/android/SPUtils.java" target-dir="src/cryptoFxeye" />
+        <framework src="com.alibaba:fastjson:1.1.56.android"/>
+        <framework src="com.squareup.okhttp3:logging-interceptor:3.3.0"/>
+    </platform>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="cryptoFxeye">
+                <param name="ios-package" value="cryptoFxeye" />
+            </feature>
+        </config-file>
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+            <array>
+                <dict>
+                    <key>API_URL</key>
+                    <string>$API_URL</string>
+                    <key>TOKEN_URL</key>
+                    <string>$TOKEN_URL</string>
+                </dict>
+            </array>
+        </config-file>
+        <source-file src="src/ios/cryptoFxeye.m" />
+
+        <source-file src="src/ios/ServerHeader.h" target-dir="src/cryptoFxeye" />
+        <header-file src="src/ios/Tools/CETCAlertView.h" target-dir="src/cryptoFxeye" />
+        <source-file src="src/ios/Tools/CETCAlertView.m" target-dir="src/cryptoFxeye" />
+        <header-file src="src/ios/Tools/CETCServer.h" target-dir="src/cryptoFxeye" />
+        <source-file src="src/ios/Tools/CETCServer.m" target-dir="src/cryptoFxeye" />
+        <header-file src="src/ios/ThirdPartyLibs/BMProgressHUD/MBProgressHUD.h" target-dir="src/cryptoFxeye" />
+        <source-file src="src/ios/ThirdPartyLibs/BMProgressHUD/MBProgressHUD.m" target-dir="src/cryptoFxeye" />
+    </platform>
+</plugin>

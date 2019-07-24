@@ -1,0 +1,19 @@
+{
+  "name": "cryptofxeye",
+  "version": "0.0.1",
+  "description": "加密解密方法",
+  "cordova": {
+    "id": "cryptoFxeye",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "fxeye",
+  "license": "ISC"
+}
